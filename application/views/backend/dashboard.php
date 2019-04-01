@@ -76,12 +76,6 @@
               <span>Dashboard</span>
               </a>
           </li>
-          <li class="mt">
-            <a class="active" href="<?=base_url('admin/dashboard', '')?>">
-              <i class="fa fa-dashboard"></i>
-              <span>Dashboard</span>
-              </a>
-          </li>
            <li>
             <a  href="<?=base_url('admin/akun', '')?>">
               <i class="fa fa-user"></i>
