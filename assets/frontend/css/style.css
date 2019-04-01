@@ -1,0 +1,157 @@
+/* generated: https://work.smarchal.com/twbscolor/3.3.7/css/333333666666ecf0f1eeeeee0 */
+.navbar-default {
+    background-color: #333;
+    border-color: #666;
+  }
+  .navbar-default .navbar-brand {
+    color: #ecf0f1;
+  }
+  .navbar-default .navbar-brand:hover,
+  .navbar-default .navbar-brand:focus {
+    color: #eee;
+  }
+  .navbar-default .navbar-text {
+    color: #ecf0f1;
+  }
+  .navbar-default .navbar-nav > li > a {
+    color: #ecf0f1;
+  }
+  .navbar-default .navbar-nav > li > a:hover,
+  .navbar-default .navbar-nav > li > a:focus {
+    color: #eee;
+  }
+  .navbar-default .navbar-nav > .active > a,
+  .navbar-default .navbar-nav > .active > a:hover,
+  .navbar-default .navbar-nav > .active > a:focus {
+    color: #eee;
+    background-color: #666;
+  }
+  .navbar-default .navbar-nav > .open > a,
+  .navbar-default .navbar-nav > .open > a:hover,
+  .navbar-default .navbar-nav > .open > a:focus {
+    color: #eee;
+    background-color: #666;
+  }
+  .navbar-default .navbar-toggle {
+    border-color: #666;
+  }
+  .navbar-default .navbar-toggle:hover,
+  .navbar-default .navbar-toggle:focus {
+    background-color: #666;
+  }
+  .navbar-default .navbar-toggle .icon-bar {
+    background-color: #ecf0f1;
+  }
+  .navbar-default .navbar-collapse,
+  .navbar-default .navbar-form {
+    border-color: #ecf0f1;
+  }
+  .navbar-default .navbar-link {
+    color: #ecf0f1;
+  }
+  .navbar-default .navbar-link:hover {
+    color: #eee;
+  }
+  
+  @media (max-width: 767px) {
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+      color: #ecf0f1;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+      color: #eeeeee;
+    }
+    .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
+    .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
+    .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+      color: #eeeeee;
+      background-color: #666666;
+    }
+  }
+
+.navbar {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+}
+
+@media (min-width: 992px) {
+    .col-border + .col-border {
+        border-left: 1px solid gray;
+    }
+}
+
+.col-dash {
+    width: 20px;
+    border-bottom: 2px solid yellowgreen;
+}
+.marketting-brand {
+    padding: 20px;
+    background-color: yellowgreen;
+    color: white;
+}
+
+.marketting-brand-2 {
+    padding: 20px;
+    background-color: orange;
+    color: white;
+}
+
+.marketting-brand small {
+    color: whitesmoke;
+}
+
+.headstyle {
+    background-color: yellowgreen;
+    color: white;
+}
+
+.headstyle a {
+    color: white;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 342px;
+}
+.sticky-footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 342px;
+}
+/*------------------------------------------------ */
+
+.footstyle {
+    padding: 20px;
+    background-color: #333;
+    color: white;
+}
+
+.footstyle input {
+    background-color: dimgray;
+    color: lightgray;
+    border: 0;
+}
+
+.footstyle .btn-success {
+    background-image: initial;
+    background-color: yellowgreen;
+    border: gray;
+}
+
+.copyright {
+    background-color: black;
+    color: lightgray;
+}
+
+.white-link a {
+  color: white;
+}
