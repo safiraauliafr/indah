@@ -9,7 +9,7 @@ class Laporan_produk extends CI_Controller
 		parent::__construct();
 		if ($this->session->userdata('usergroup') == 2)
 		{
-			$this->load->model('Model_produk');
+			$this->load->model('Model_transaksi');
 			$this->load->model('akun_model');
 			$this->load->model('company_profile_model');
 		}
@@ -22,43 +22,43 @@ class Laporan_produk extends CI_Controller
 
 	}
 
-	public function index()
+	 public function index()
 	{
 		if (isset($_GET['filter']) && ! empty($_GET['filter'])) {
 
 			$filter = $_GET['filter'];
 			
 			if ($filter == '1') {
-				$tgl = $_GET['tanggal'];
+				$tgl = $_GET['tgl'];
 
-				$ket = 'Data Produk Tanggal '.date('d-m-y', strtotime($tgl));
-				$url_cetak = 'produk/cetak?filter=1&tahun='.$tgl;
-				$produk = $this->Model_produk->view_by_date($tgl);
+				$ket = 'Data Transaksi tgl '.date('d-m-y', strtotime($tgl));
+				$url_cetak = 'transaksi/cetak?filter=1&tahun='.$tgl;
+				$transaksi = $this->Model_transaksi->view_by_date($tgl);
 
 			} else if ($filter == '2') {
 				$bulan = $_GET['bulan'];
 				$tahun = $_GET['tahun'];
 				$nama_bulan = array('' => 'Januari','Februari','Maret','April','Mei',
 											'Juni','Juli','Agustus','September','Oktober','November','Desember');
-				$ket = 'Data Produk Bulan '.$nama_bulan[$bulan].''.$tahun;
-				$url_cetak = 'produk/cetak?filter=2&bulan='.$bulan.'&tahun='.$tahun;
-				$produk = $this->Model_produk->view_by_month($bulan, $tahun);
+				$ket = 'Data Transaksi Bulan '.$nama_bulan[$bulan].''.$tahun;
+				$url_cetak = 'transaksi/cetak?filter=2&bulan='.$bulan.'&tahun='.$tahun;
+				$transaksi = $this->Model_transaksi->view_by_month($bulan, $tahun);
 			
 			} 
 
 		} else {
-			$ket = 'Semua Data Produk';
-			$url_cetak = 'produk/cetak';
-			$produk = $this->Model_produk->view_all();
+			$ket = 'Semua Data Transaksi';
+			$url_cetak = 'transaksi/cetak';
+			$transaksi = $this->Model_transaksi->view_all();
 
 		}
 
 		$data['ket'] = $ket;
 		$data['url_cetak'] = base_url('index.php/'.$url_cetak);
-		$data['produk'] = $produk;
-		$data['option_tahun'] = $this->Model_produk->option_tahun();
+		$data['transaksi'] = $transaksi;
+		$data['option_tahun'] = $this->Model_transaksi->option_tahun();
 
-		$this->load->view('view', $data);
+		$this->load->view('backend/view_lapproduk', $data);
 	}
 
 	public function cetak(){
@@ -68,10 +68,10 @@ class Laporan_produk extends CI_Controller
 
 			if ($filter == '1') {
 				
-				$tgl = $_GET['tanggal'];
+				$tgl = $_GET['tgl'];
 
-				$ket = 'Data Transaksi Tanggal '.date('d-m-y', strtotime($tgl));
-				$produk = $this->Model_produk->view_by_date($tgl);
+				$ket = 'Data Transaksi tgl '.date('d-m-y', strtotime($tgl));
+				$transaksi = $this->Model_transaksi->view_by_date($tgl);
 			
 			} else if ($filter == '2') {
 				
@@ -80,20 +80,20 @@ class Laporan_produk extends CI_Controller
 				$nama_bulan = array('' => 'Januari','Februari','Maret','April','Mei',
 											'Juni','Juli','Agustus','September','Oktober','November','Desember');
 				$ket = 'Data Transaksi Bulan '.$nama_bulan[$bulan].''.$tahun;
-				$produk = $this->Model_produk->view_by_month($bulan, $tahun);
+				$transaksi = $this->Model_transaksi->view_by_month($bulan, $tahun);
 			
 			} 
 		
 		} else {
 			$ket = 'Semua Data Transaksi';
-			$transaksi = $this->Model_produk->view_all();
+			$transaksi = $this->Model_transaksi->view_all();
 		}
 	
 		$data['ket'] = $ket;
 		$data['transaksi'] = $transaksi;
 
 		ob_start();
-		$this->load->view('print', $data);
+		$this->load->view('backend/print_transaksi', $data);
 		$html = ob_get_contents();
 				ob_end_clean();
 

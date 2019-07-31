@@ -17,11 +17,9 @@
     
   <table border="1" cellpadding="8">
   <tr>
-    <th>Tanggal</th>
-    <th>ID Invoice</th>
-    <th>Nama Produk</th>
-    <th>Jumlah</th>
-    <th>Biaya</th>
+        <th>Tanggal</th>
+        <th>Nama Barang</th>
+        <th>Jumlah</th>
   </tr>
     <?php
     if( ! empty($transaksi)){
@@ -30,10 +28,8 @@
             $tgl = date('d-m-Y', strtotime($data->tgl));
         echo "<tr>";
         echo "<td>".$tgl."</td>";
-        echo "<td>".$data->id_invoice."</td>";
-        echo "<td>".$data->nama_produk."</td>";
+        echo "<td>".$data->nama_barang."</td>";
         echo "<td>".$data->jumlah."</td>";
-        echo "<td>".$data->biaya."</td>";
         echo "</tr>";
         $no++;
       }

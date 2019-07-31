@@ -289,6 +289,11 @@ class Akun extends CI_Controller
 				$this->session->set_flashdata('error', 'Nama pengguna / kata sandi salah');
 			}
 		}
+
+         $pesan['message'] =    "Pendaftaran berhasil";
+             
+             $this->load->view('frontend/v_success',$pesan);
+
 		return redirect('akun');
 	}
 

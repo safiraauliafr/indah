@@ -110,21 +110,15 @@
               </a>
           </li>
            <li>
-            <a href="<?=base_url('admin/c_produk', '')?>">
+            <a href="<?=base_url('admin/laporan_produk', '')?>">
               <i class="fa fa-file-text-o fa-fw"></i>
               <span>Laporan Data Produk</span>
               </a>
-          </li>
-           <li>
-            <a href="<?=base_url('admin/laptrans/cetak', '')?>">
-              <i class="fa fa-file-text-o fa-fw"></i>
-              <span>Laporan Transaksi Keuangan</span>
-              </a>
-          </li>  
+          </li>          
            <li>
             <a href="<?=base_url('admin/laporan_transaksi', '')?>">
               <i class="fa fa-file-text-o fa-fw"></i>
-              <span>Laporan</span>
+              <span>Laporan Transaksi Keuangan</span>
               </a>
           </li>
         

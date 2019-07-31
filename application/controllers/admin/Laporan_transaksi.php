@@ -58,7 +58,7 @@ class Laporan_transaksi extends CI_Controller
 		$data['transaksi'] = $transaksi;
 		$data['option_tahun'] = $this->Model_transaksi->option_tahun();
 
-		$this->load->view('view', $data);
+		$this->load->view('backend/view_transaksi', $data);
 	}
 
 	public function cetak(){
@@ -93,7 +93,7 @@ class Laporan_transaksi extends CI_Controller
 		$data['transaksi'] = $transaksi;
 
 		ob_start();
-		$this->load->view('print', $data);
+		$this->load->view('backend/print_transaksi', $data);
 		$html = ob_get_contents();
 				ob_end_clean();
 

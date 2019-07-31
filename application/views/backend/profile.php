@@ -112,17 +112,17 @@
               </a>
           </li>
            <li>
-            <a href="<?=base_url('admin/c_produk', '')?>">
+            <a href="<?=base_url('admin/laporan_produk', '')?>">
               <i class="fa fa-file-text-o fa-fw"></i>
               <span>Laporan Data Produk</span>
               </a>
-          </li>
+          </li>          
            <li>
-            <a href="<?=base_url('admin/laptrans/cetak', '')?>">
+            <a href="<?=base_url('admin/laporan_transaksi', '')?>">
               <i class="fa fa-file-text-o fa-fw"></i>
               <span>Laporan Transaksi Keuangan</span>
               </a>
-          </li>           
+          </li>          
 
         <!-- sidebar menu end-->
       </div>
@@ -141,7 +141,7 @@
                       <div class="col-lg-8 col-lg-offset-2 detailed">
                         <h4 class="mb">Edit Profil</h4>
                          <form role="form" class="form-horizontal" action="<?php echo base_url('admin/akun/perbaharui_profil');?>" class="form-horizontal" method="post" enctype="multipart/form-data">
-                        <?php foreach ($user as $user1) :?>
+                          <?php foreach ($user as $user1) :?>
                          <div class="form-group">
                             <div class="col-md-12 text-center">
                               <img class="img-circle" src="<?=base_url('assets/uploads/', '')?><?php echo $user1->avatar ;?>" style="width: 100px; height: 100px;">        

@@ -161,14 +161,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						</div>
 					</div>
 
-			    <script type="text/javascript">
-                alert("Registrasi berhasil !");
-              </script>
-
 				<?=form_close()?>
 				<br>
 				<p class="lead">Sudah punya akun? <?=anchor('akun/masuk', 'Klik disini untuk masuk')?></p>
 				<br>
+
 			</div>
 		</div>
 		<br>

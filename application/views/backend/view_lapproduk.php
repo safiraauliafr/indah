@@ -59,9 +59,8 @@
     <table border="1" cellpadding="8">
     <tr>
         <th>Tanggal</th>
-        <th>Nama Produk</th>
+        <th>Nama Barang</th>
         <th>Jumlah</th>
-        <th>Biaya</th>
     </tr>
     <?php
     if( ! empty($transaksi)){
@@ -71,9 +70,8 @@
             
         echo "<tr>";
         echo "<td>".$tgl."</td>";
-        echo "<td>".$data->nama_produk."</td>";
+        echo "<td>".$data->nama_barang."</td>";
         echo "<td>".$data->jumlah."</td>";
-        echo "<td>".$data->biaya."</td>";
         echo "</tr>";
         $no++;
       }

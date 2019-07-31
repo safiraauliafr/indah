@@ -8,7 +8,7 @@ if (!defined('BASEPATH'))exit('No direct script access allowed');
     {
         $this->db->where('DATE(tanggal)', $date);
 
-        return $this->db->get('pemesanan')->result();
+        return $this->db->get('laporan')->result();
     }
 
     public function view_by_month($month, $year)
@@ -16,18 +16,18 @@ if (!defined('BASEPATH'))exit('No direct script access allowed');
         $this->db->where('MONTH(tanggal)', $month);
         $this->db->where('YEAR(tanggal)', $year);
 
-        return $this->db->get('pemesanan')->result();
+        return $this->db->get('laporan')->result();
     }
 
     public function view_all()
     {
-        return $this->db->get('pemesanan')->result();
+        return $this->db->get('laporan')->result();
     }
 
     public function option_tahun()
     {
         $this->db->select('YEAR(tanggal) AS tahun');
-        $this->db->from('pemesanan');
+        $this->db->from('laporan');
         $this->db->order_by('YEAR(tanggal)');
         $this->db->group_by('YEAR(tanggal)');
 

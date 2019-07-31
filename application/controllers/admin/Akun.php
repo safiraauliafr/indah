@@ -137,25 +137,23 @@ class Akun extends CI_Controller
 				)
 			);
 
-			if ($updated)
+            if ($updated)             
+            {
+            	$this->session->set_flashdata('success', 'Anda telah berhasil memperbarui informasi pelanggan anda');                 
+			if
+			($this->session->flashdata('redir'))                 
 			{
-				$this->session->set_flashdata('success', 'Anda telah berhasil memperbarui informasi pelanggan anda');
-				if ($this->session->flashdata('redir'))
-				{
-					redirect($this->session->flashdata('redir'));
-				}
-				else
-				{
-					redirect('admin/akun');
-				}
-			}
-			else
-			{
-				$this->session->set_flashdata('error', 'Gagal memperbarui informasi pelanggan');
-			}
-        }elseif (isset($_FILES['avatar']['name'])) {
-        	if ($this->upload->do_upload('avatar')){
-        		$file = $this->upload->data();
+				redirect($this->session->flashdata('redir'));                 }
+				else                 
+					{                     
+						redirect('admin/akun');
+			}             		
+					}             
+				else             {
+$this->session->set_flashdata('error', 'Gagal memperbarui informasi
+pelanggan');             }         }elseif (isset($_FILES['avatar']['name']))
+{             if ($this->upload->do_upload('avatar')){                 $file =
+$this->upload->data();
 
         	
                 $config['image_library']='gd2';
