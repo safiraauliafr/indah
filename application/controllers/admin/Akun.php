@@ -151,6 +151,7 @@ class Akun extends CI_Controller
 					}             
 				else             {
 $this->session->set_flashdata('error', 'Gagal memperbarui informasi
+
 pelanggan');             }         }elseif (isset($_FILES['avatar']['name']))
 {             if ($this->upload->do_upload('avatar')){                 $file =
 $this->upload->data();
