@@ -31,7 +31,7 @@ class Laporan_transaksi extends CI_Controller
 				$tgl = $_GET['tgl'];
 
 				$ket = 'Data Transaksi tgl ' . date('d-m-y', strtotime($tgl));
-				$url_cetak = 'transaksi/cetak?filter=1&tahun=' . $tgl;
+				$url_cetak = 'admin/laporan_transaksi/cetak?filter=1&tahun=' . $tgl;
 				$transaksi = $this->Model_transaksi->view_by_date($tgl);
 			} else if ($filter == '2') {
 				$bulan = $_GET['bulan'];
@@ -41,17 +41,17 @@ class Laporan_transaksi extends CI_Controller
 					'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
 				);
 				$ket = 'Data Transaksi Bulan ' . $nama_bulan[$bulan] . '' . $tahun;
-				$url_cetak = 'transaksi/cetak?filter=2&bulan=' . $bulan . '&tahun=' . $tahun;
+				$url_cetak = 'admin/laporan_transaksi/cetak?filter=2&bulan=' . $bulan . '&tahun=' . $tahun;
 				$transaksi = $this->Model_transaksi->view_by_month($bulan, $tahun);
 			}
 		} else {
 			$ket = 'Semua Data Transaksi';
-			$url_cetak = 'transaksi/cetak';
+			$url_cetak = 'admin/laporan_transaksi/cetak';
 			$transaksi = $this->Model_transaksi->view_all();
 		}
 
 		$data['ket'] = $ket;
-		$data['url_cetak'] = base_url('index.php/' . $url_cetak);
+		$data['url_cetak'] = base_url($url_cetak);
 		$data['transaksi'] = $transaksi;
 		$data['option_tahun'] = $this->Model_transaksi->option_tahun();
 

@@ -147,7 +147,7 @@
                             <label>Filter Berdasarkan</label><br>
                             <select name="filter" id="filter">
                                 <option value="">Pilih</option>
-                                <option value="1">Per Tanggal</option>
+                                <!-- <option value="1">Per Tanggal</option> -->
                                 <option value="2">Per Bulan</option>
                             </select>
                             <br /><br />

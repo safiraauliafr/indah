@@ -139,13 +139,13 @@
         <section id="main-content">
             <section class="wrapper">
                 <div class="row">
-                    <h2>Data Transaksi</h2>
+                    <h2>Data Produk</h2>
                     <hr>
                     <form method="get" action="">
                         <label>Filter Berdasarkan</label><br>
                         <select name="filter" id="filter">
                             <option value="">Pilih</option>
-                            <option value="1">Per Tanggal</option>
+                            <!-- <option value="1">Per Tanggal</option> -->
                             <option value="2">Per Bulan</option>
                         </select>
                         <br /><br />
@@ -222,23 +222,23 @@
                                 dateFormat: 'yy-mm-dd' // Set format tanggalnya jadi yyyy-mm-dd
                             });
                             $('#form-tanggal, #form-bulan, #form-tahun')
-                        .hide(); // Sebagai default kita sembunyikan form filter tanggal, bulan & tahunnya
+                                .hide(); // Sebagai default kita sembunyikan form filter tanggal, bulan & tahunnya
                             $('#filter').change(function() { // Ketika user memilih filter
                                 if ($(this).val() == '1') { // Jika filter nya 1 (per tanggal)
                                     $('#form-bulan, #form-tahun')
-                                .hide(); // Sembunyikan form bulan dan tahun
+                                        .hide(); // Sembunyikan form bulan dan tahun
                                     $('#form-tanggal').show(); // Tampilkan form tanggal
                                 } else if ($(this).val() == '2') { // Jika filter nya 2 (per bulan)
                                     $('#form-tanggal').hide(); // Sembunyikan form tanggal
                                     $('#form-bulan, #form-tahun')
-                                .show(); // Tampilkan form bulan dan tahun
+                                        .show(); // Tampilkan form bulan dan tahun
                                 } else { // Jika filternya 3 (per tahun)
                                     $('#form-tanggal, #form-bulan')
-                                .hide(); // Sembunyikan form tanggal dan bulan
+                                        .hide(); // Sembunyikan form tanggal dan bulan
                                     $('#form-tahun').show(); // Tampilkan form tahun
                                 }
                                 $('#form-tanggal input, #form-bulan select, #form-tahun select').val(
-                                ''); // Clear data pada textbox tanggal, combobox bulan & tahun
+                                    ''); // Clear data pada textbox tanggal, combobox bulan & tahun
                             })
                         })
                         </script>
