@@ -30,8 +30,8 @@ class Laporan_produk extends CI_Controller
 			if ($filter == '1') {
 				$tgl = $_GET['tgl'];
 
-				$ket = 'Data Transaksi tgl ' . date('d-m-y', strtotime($tgl));
-				$url_cetak = 'transaksi/cetak?filter=1&tahun=' . $tgl;
+				$ket = 'Data Produk tgl ' . date('d-m-y', strtotime($tgl));
+				$url_cetak = 'admin/laporan_produk/cetak?filter=1&tahun=' . $tgl;
 				$transaksi = $this->Model_transaksi->view_by_date($tgl);
 			} else if ($filter == '2') {
 				$bulan = $_GET['bulan'];
@@ -40,18 +40,18 @@ class Laporan_produk extends CI_Controller
 					'' => 'Januari', 'Februari', 'Maret', 'April', 'Mei',
 					'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
 				);
-				$ket = 'Data Transaksi Bulan ' . $nama_bulan[$bulan] . '' . $tahun;
-				$url_cetak = 'transaksi/cetak?filter=2&bulan=' . $bulan . '&tahun=' . $tahun;
+				$ket = 'Data Produk Bulan ' . $nama_bulan[$bulan] . '' . $tahun;
+				$url_cetak = 'admin/laporan_produk/cetak?filter=2&bulan=' . $bulan . '&tahun=' . $tahun;
 				$transaksi = $this->Model_transaksi->view_by_month($bulan, $tahun);
 			}
 		} else {
-			$ket = 'Semua Data Transaksi';
-			$url_cetak = 'transaksi/cetak';
+			$ket = 'Semua Data Produk';
+			$url_cetak = 'admin/laporan_produk/cetak';
 			$transaksi = $this->Model_transaksi->view_all();
 		}
 
 		$data['ket'] = $ket;
-		$data['url_cetak'] = base_url('index.php/' . $url_cetak);
+		$data['url_cetak'] = base_url($url_cetak);
 		$data['transaksi'] = $transaksi;
 		$data['option_tahun'] = $this->Model_transaksi->option_tahun();
 
@@ -68,7 +68,7 @@ class Laporan_produk extends CI_Controller
 
 				$tgl = $_GET['tgl'];
 
-				$ket = 'Data Transaksi tgl ' . date('d-m-y', strtotime($tgl));
+				$ket = 'Data Produk tgl ' . date('d-m-y', strtotime($tgl));
 				$transaksi = $this->Model_transaksi->view_by_date($tgl);
 			} else if ($filter == '2') {
 
@@ -78,11 +78,11 @@ class Laporan_produk extends CI_Controller
 					'' => 'Januari', 'Februari', 'Maret', 'April', 'Mei',
 					'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember'
 				);
-				$ket = 'Data Transaksi Bulan ' . $nama_bulan[$bulan] . '' . $tahun;
+				$ket = 'Data Produk Bulan ' . $nama_bulan[$bulan] . '' . $tahun;
 				$transaksi = $this->Model_transaksi->view_by_month($bulan, $tahun);
 			}
 		} else {
-			$ket = 'Semua Data Transaksi';
+			$ket = 'Semua Data Produk';
 			$transaksi = $this->Model_transaksi->view_all();
 		}
 
@@ -90,7 +90,7 @@ class Laporan_produk extends CI_Controller
 		$data['transaksi'] = $transaksi;
 
 		ob_start();
-		$this->load->view('backend/print_transaksi', $data);
+		$this->load->view('backend/print_produk', $data);
 		$html = ob_get_contents();
 		ob_end_clean();
 
@@ -99,6 +99,6 @@ class Laporan_produk extends CI_Controller
 
 		$pdf = new HTML2PDF('P', 'A4', 'en');
 		$pdf->WriteHTML($html);
-		$pdf->Output('Data Transaksi.pdf', 'D');
+		$pdf->Output('Data Produk.pdf', 'D');
 	}
 }

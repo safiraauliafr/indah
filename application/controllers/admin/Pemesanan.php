@@ -34,7 +34,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 							'status_terjual' =>'1'
 						);
 		$this->invoice_model->update_stok(array('invoice_id' => $id_invoice, $data));
-			redirect()
+			redirect();
 		}
 	}
 
