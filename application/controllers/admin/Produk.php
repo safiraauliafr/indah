@@ -114,7 +114,7 @@ class Produk extends CI_Controller
 		$info['meta'] = array(
 			array(
 				'name' 		=> 'description',
-				'content'	=> 'Edit produk tanaman hias'
+				'content'	=> 'Edit produk'
 			)
 		);
 		

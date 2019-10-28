@@ -150,10 +150,11 @@
                                 <div class="row">
                                     <div class="col-lg-8 col-lg-offset-2 detailed">
                                         <form role="form" class="form-horizontal"
-                                            action="<?php echo base_url('admin/user/update'); ?>"
+                                            action="<?php echo base_url('admin/user/edited'); ?>"
                                             class="form-horizontal" method="post">
                                             <?php foreach ($user as $user1) : ?>
-                                            <input type="hidden" name="id" value="<?php echo $user1->id_pengguna; ?>">
+                                            <input type="hidden" name="id_pengguna"
+                                                value="<?=$this->uri->segment('3'); ?>">
                                             <div class="form-group">
                                                 <label class="col-lg-2 control-label">Nama Depan</label>
                                                 <div class="col-lg-6">
@@ -410,7 +411,8 @@
             // (string | mandatory) the text inside the notification
             text: 'Hover me to enable the Close Button. You can hide the left sidebar clicking on the button next to the logo.',
             // (string | optional) the image to display on the left
-            image: '<?= base_url("assets/backend/img/avatar.jpg", '') ?>',
+            image: '<?= base_url("assets/backend/img/avatar.jpg", '
+            ') ?>',
             // (bool | optional) if you want it to fade out on its own or just sit there
             sticky: false,
             // (int | optional) the time you want it to be alive for before fading out
