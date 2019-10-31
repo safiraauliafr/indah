@@ -17,14 +17,9 @@
     <link href="<?= base_url('assets/backend/lib/bootstrap/css/bootstrap.min.css', '') ?>" rel="stylesheet">
     <!--external css-->
     <link href="<?= base_url('assets/backend/lib/font-awesome/css/font-awesome.css', '') ?>" rel="stylesheet" />
-    <link rel="stylesheet" type="text/css" href="<?= base_url('assets/backend/css/zabuto_calendar.css', '') ?>">
-    <link rel="stylesheet" type="text/css"
-        href="<?= base_url('assets/backend/lib/gritter/css/jquery.gritter.css', '') ?>" />
     <!-- Custom styles for this template -->
     <link href="<?= base_url('assets/backend/css/style.css', '') ?>" rel="stylesheet">
-    <link href="<?= base_url('assets/backend/css/style.css', '') ?>" rel="stylesheet">
-    <script src="<?= base_url('assets/backend/lib/chart-master/Chart.js', '') ?>"></script>
-    <script src="<?= base_url('assets/backend/lib/jquery/jquery.min.js', '') ?>"></script>
+    <link href="<?= base_url('assets/backend/css/style-responsive.css', '') ?>" rel="stylesheet">
 
 
     <!-- =======================================================
@@ -47,7 +42,7 @@
             </div>
             <!--logo start-->
             <?php foreach ($company as $company1) : ?>
-            <a href="<?= base_url('admin/dashboard', '') ?>" class="logo"><?php echo $company1->nama ?></a>
+            <a href=" <?= base_url('admin/dashboard', '') ?>" class="logo"><?php echo $company1->nama ?></a>
             <?php endforeach ?>
             <!--logo end-->
             <div class="top-menu">
@@ -98,10 +93,9 @@
                     </li>
                     <li>
                         <a href="<?= base_url('admin/account', '') ?>">
-                            <i class="fa fa-users"></i>
+                            <i class="fa fa-cog"></i>
                             <span> User</span>
                         </a>
-                    </li>
                     </li>
                     <li>
                         <a href="<?= base_url('admin/produk', '') ?>">
@@ -238,12 +232,8 @@
     <script src="<?= base_url('assets/backend/lib/jquery.sparkline.js', '') ?>"></script>
     <!--common script for all pages-->
     <script src="<?= base_url('assets/backend/lib/common-scripts.js', '') ?>"></script>
-    <script type="text/javascript" src="<?= base_url('assets/backend/lib/gritter/js/jquery.gritter.js', '') ?>">
-    </script>
-    <script type="text/javascript" src="<?= base_url('assets/backend/lib/gritter-conf.js', '') ?>"></script>
     <!--script for this page-->
-    <script src="<?= base_url('assets/backend/lib/sparkline-chart.js', '') ?>"></script>
-    <script src="<?= base_url('assets/backend/lib/zabuto_calendar.js', '') ?>"></script>
+    <script src="<?= base_url('assets/backend/lib/form-validation-script.js', '') ?>"> </script>
     <script type="text/javascript">
     $(document).ready(function() {
         var unique_id = $.gritter.add({
@@ -265,7 +255,7 @@
         return false;
     });
     </script>
-    <script type="application/javascript">
+    <script type=" application/javascript">
     $(document).ready(function() {
         $("#date-popover").popover({
             html: true,
@@ -275,7 +265,6 @@
         $("#date-popover").click(function(e) {
             $(this).hide();
         });
-
         $("#my-calendar").zabuto_calendar({
             action: function() {
                 return myDateFunction(this.id, false);
@@ -288,22 +277,21 @@
                 modal: true
             },
             legend: [{
-                    type: "text",
-                    label: "Special event",
-                    badge: "00"
-                },
-                {
-                    type: "block",
-                    label: "Regular event",
-                }
-            ]
+                type: "text",
+                label: "Special event",
+                badge: "00"
+            }, {
+                type: "block",
+                label: "Regular event",
+            }]
         });
     });
 
     function myNavFunction(id) {
         $("#date-popover").hide();
         var nav = $("#" + id).data("navigation");
-        var to = $("#" + id).data("to");
+        var to = $("#" +
+            id).data("to");
         console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
     }
     </script>

@@ -93,8 +93,12 @@
                             <span>Data User</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="<?= base_url('admin/account', '') ?>">
+                            <i class="fa fa-cog"></i>
+                            <span> User</span>
+                        </a>
                     </li>
-
                     <li>
                         <a href="<?= base_url('admin/produk', '') ?>">
                             <i class="fa fa-shopping-cart"></i>

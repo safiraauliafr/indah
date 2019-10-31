@@ -93,8 +93,12 @@
                             <span>Data User</span>
                         </a>
                     </li>
+                    <li>
+                        <a href="<?= base_url('admin/account', '') ?>">
+                            <i class="fa fa-cog"></i>
+                            <span> User</span>
+                        </a>
                     </li>
-
                     <li>
                         <a href="<?= base_url('admin/produk', '') ?>">
                             <i class="fa fa-shopping-cart"></i>
@@ -154,7 +158,7 @@
                                             class="form-horizontal" method="post">
                                             <?php foreach ($user as $user1) : ?>
                                             <input type="hidden" name="id_pengguna"
-                                                value="<?=$this->uri->segment('3'); ?>">
+                                                value="<?= $this->uri->segment('3'); ?>">
                                             <div class="form-group">
                                                 <label class="col-lg-2 control-label">Nama Depan</label>
                                                 <div class="col-lg-6">

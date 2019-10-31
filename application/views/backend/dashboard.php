@@ -93,13 +93,11 @@
                             <span>Data User</span>
                         </a>
                     </li>
-                    </li>
                     <li>
                         <a href="<?= base_url('admin/account', '') ?>">
-                            <i class="fa fa-users"></i>
+                            <i class="fa fa-cog"></i>
                             <span> User</span>
                         </a>
-                    </li>
                     </li>
                     <li>
                         <a href="<?= base_url('admin/produk', '') ?>">
