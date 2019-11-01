@@ -293,14 +293,14 @@
                                                     name="alamat" required><?php echo $user1->alamat; ?></textarea>
                                             </div>
                                         </div>
-                                        <div class="form-group">
+                                        <!-- <div class="form-group">
                                             <label class="col-lg-2 control-label">Kode Pos</label>
                                             <div class="col-lg-6">
                                                 <input type="text" placeholder="Masukkan Kode Pos" id="kode_pos"
                                                     name="kode_pos" class="form-control"
                                                     value="<?php echo $user1->kode_pos; ?>" required>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <div class="form-group">
                                             <div class="col-lg-offset-2 col-lg-10">
                                                 <button class="btn btn-theme" type="submit">Save</button>

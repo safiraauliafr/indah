@@ -91,7 +91,7 @@ class Akun extends CI_Controller
 		$this->form_validation->set_rules('nomor_telepon', 'Nomor telepon', ['trim', 'required', 'regex_match[/^(\+|[0])[0-9]+$/]']);
 		$this->form_validation->set_rules('provinsi', 'Provinsi', 'required|is_natural|max_length[2]');
 		$this->form_validation->set_rules('alamat', 'Alamat utama', 'trim|required|max_length[255]');
-		$this->form_validation->set_rules('kode_pos', 'Kode pos utama', 'trim|required|is_natural|max_length[8]');
+		// $this->form_validation->set_rules('kode_pos', 'Kode pos utama', 'trim|required|is_natural|max_length[8]');
 
 		$config['upload_path'] = './assets/uploads/' . set_value('avatar'); //path folder
 		$config['allowed_types'] = 'gif|jpg|png|jpeg|bmp';
@@ -122,8 +122,8 @@ class Akun extends CI_Controller
 						'district_id'	=> set_value('kecamatan'),
 						'tanggal_lahir'	=> set_value('tanggal_lahir'),
 						'jenis_kelamin'	=> set_value('jenis_kelamin'),
-						'alamat' 		=> set_value('alamat'),
-						'kode_pos' 		=> set_value('kode_pos')
+						'alamat' 		=> set_value('alamat')
+						// 'kode_pos' 		=> set_value('kode_pos')
 					)
 				);
 
