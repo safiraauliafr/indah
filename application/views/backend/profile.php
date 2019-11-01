@@ -308,7 +308,7 @@
                                             </div>
                                         </div>
                                     </form>
-                                    <form role="form" class="form-horizontal"
+                                    <!-- <form role="form" class="form-horizontal"
                                         action="<?php echo base_url('admin/akun/perbaharui_akun'); ?>"
                                         class="form-horizontal">
 
@@ -350,7 +350,7 @@
                                                 <button class="btn btn-theme04" type="button">Cancel</button>
                                             </div>
                                         </div>
-                                    </form>
+                                    </form> -->
                                 </div>
                                 <!-- /col-lg-8 -->
                             </div>

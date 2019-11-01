@@ -146,7 +146,7 @@
                                 <div class="col-lg-8 col-lg-offset-2 detailed">
                                     <h4 class="mb">Edit Akun</h4>
                                     <form role="form" class="form-horizontal"
-                                        action="<?php echo base_url('admin/account/perbaharui_profil'); ?>"
+                                        action="<?php echo base_url('admin/account/perbaharui_akun'); ?>"
                                         class="form-horizontal" method="post" enctype="multipart/form-data">
                                         <?php foreach ($user as $user1) : ?>
 

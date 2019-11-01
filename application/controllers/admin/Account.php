@@ -74,7 +74,7 @@ class Account extends CI_Controller
             } else {
                 $this->session->set_flashdata('error', 'Gagal memperbarui data akun anda');
             }
-            redirect('admin/akun');
+            redirect('admin/account');
         }
         redirect('admin/dashboard');
     }
