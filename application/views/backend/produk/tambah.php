@@ -146,10 +146,10 @@
                         <h1 class="text-center">Daftar Produk</h1>
                         <h1>Tambah Produk Baru</h1>
                         <?php
-            echo validation_errors('<div class="alert alert-danger">', '</div>');
-            @print($error);
-            echo form_open_multipart('admin/produk/tambah', ['class' => 'form-horizontal'])
-            ?>
+                        echo validation_errors('<div class="alert alert-danger">', '</div>');
+                        @print($error);
+                        echo form_open_multipart('admin/produk/tambah', ['class' => 'form-horizontal'])
+                        ?>
                         <div class="form-group">
                             <label for="namaProduk" class="col-sm-2 control-label">Nama produk</label>
                             <div class="col-sm-10">
@@ -225,8 +225,8 @@
                             </div>
                         </div>
                         <div class="col-sm-10 col-sm-offset-2">
-                            <button type="submit" class="btn btn-primary">Tambahkan</button>
-                            <button type="reset" class="btn btn-default">Atur ulang kembali form</button>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                            <button type="reset" class="btn btn-default">Cancel</button>
                         </div>
                         <?= form_close() ?>
                         <br>

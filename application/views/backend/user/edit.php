@@ -309,8 +309,8 @@
                                             <div class="form-group">
                                                 <div class="col-lg-offset-2 col-lg-10">
                                                     <button class="btn btn-theme" type="submit">Save</button>
-                                                    <button class="btn btn-theme04" type="button">Cancel</button>
-                                                </div>
+                                                    <a href="<?php echo base_url() . "admin/user/index/" ?>"
+                                                        class="btn btn-theme04">Cancel</a> </div>
                                             </div>
                                         </form>
                                         <form role="form" class="form-horizontal"
@@ -353,8 +353,8 @@
                                             <div class="form-group">
                                                 <div class="col-lg-offset-2 col-lg-10">
                                                     <button class="btn btn-theme" type="submit">Save</button>
-                                                    <button class="btn btn-theme04" type="button">Cancel</button>
-                                                </div>
+                                                    <a href="<?php echo base_url() . "admin/user/index/" ?>"
+                                                        class="btn btn-theme04">Cancel</a> </div>
                                             </div>
                                         </form>
                                     </div>

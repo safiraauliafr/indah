@@ -142,40 +142,40 @@
         <section id="main-content">
             <section class="wrapper">
                 <?php
-        defined('BASEPATH') or exit('No direct script access allowed');
+                defined('BASEPATH') or exit('No direct script access allowed');
 
-        $id = $produk->id_produk;
-        $nama = $produk->nama;
-        $harga = $produk->harga;
-        $persediaan = $produk->persediaan;
-        $berat = $produk->berat;
-        $panjang = $produk->panjang;
-        $lebar = $produk->lebar;
-        $tinggi = $produk->tinggi;
-        $deskripsi = $produk->deskripsi;
-        $gambar = $produk->gambar;
+                $id = $produk->id_produk;
+                $nama = $produk->nama;
+                $harga = $produk->harga;
+                $persediaan = $produk->persediaan;
+                $berat = $produk->berat;
+                $panjang = $produk->panjang;
+                $lebar = $produk->lebar;
+                $tinggi = $produk->tinggi;
+                $deskripsi = $produk->deskripsi;
+                $gambar = $produk->gambar;
 
-        if ($this->input->post('is_submitted')) {
-          $nama = set_value('nama');
-          $harga = set_value('harga');
-          $persediaan = set_value('persediaan');
-          $berat = set_value('berat');
-          $panjang = set_value('panjang');
-          $lebar = set_value('lebar');
-          $tinggi = set_value('tinggi');
-          $deskripsi = set_value('deskripsi');
-        }
-        ?>
+                if ($this->input->post('is_submitted')) {
+                    $nama = set_value('nama');
+                    $harga = set_value('harga');
+                    $persediaan = set_value('persediaan');
+                    $berat = set_value('berat');
+                    $panjang = set_value('panjang');
+                    $lebar = set_value('lebar');
+                    $tinggi = set_value('tinggi');
+                    $deskripsi = set_value('deskripsi');
+                }
+                ?>
 
                 <div class="container">
                     <div class="row">
                         <div class="col-md-12">
                             <h1 class="text-center">Edit Produk #<strong><?= $id ?></strong></h1>
                             <?php
-              echo validation_errors('<div class="alert alert-danger">', '</div>');
-              @print($error);
-              echo form_open_multipart('admin/produk/edit/' . $id, ['class' => 'form-horizontal'])
-              ?>
+                            echo validation_errors('<div class="alert alert-danger">', '</div>');
+                            @print($error);
+                            echo form_open_multipart('admin/produk/edit/' . $id, ['class' => 'form-horizontal'])
+                            ?>
                             <div class="form-group">
                                 <label for="namaProduk" class="col-sm-2 control-label">Nama produk</label>
                                 <div class="col-sm-10">
@@ -255,8 +255,8 @@
                             </div>
                             <div class="col-sm-10 col-sm-offset-2">
                                 <input type="hidden" name="is_submitted" value="1">
-                                <button type="submit" class="btn btn-primary">Simpan perubahan</button>
-                                <button type="reset" class="btn btn-default">Atur ulang kembali form</button>
+                                <button type="submit" class="btn btn-primary">Save</button>
+                                <button type="reset" class="btn btn-default">Cancel</button>
                             </div>
                             <?= form_close() ?>
                             <br>

@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class Akun extends CI_Controller
 {
@@ -13,8 +13,7 @@ class Akun extends CI_Controller
 
 	public function index()
 	{
-		if (!$this->session->has_userdata('id'))
-		{
+		if (!$this->session->has_userdata('id')) {
 			$this->session->set_flashdata('error', "Anda harus masuk untuk melanjutkan");
 			$this->session->set_flashdata('redir', uri_string());
 			redirect('akun/masuk');
@@ -27,8 +26,7 @@ class Akun extends CI_Controller
 		$this->form_validation->set_rules('alamat', 'Alamat utama', 'trim|required|max_length[255]');
 		$this->form_validation->set_rules('kodepos', 'Kode pos utama', 'trim|required|is_natural|max_length[8]');
 
-		if ($this->form_validation->run() == FALSE)
-		{
+		if ($this->form_validation->run() == FALSE) {
 			$this->session->keep_flashdata('redir');
 			$info['title'] = 'Pengaturan Pengguna';
 			$this->load->view('frontend/head', $info);
@@ -40,9 +38,7 @@ class Akun extends CI_Controller
 			$this->load->view('frontend/akun/akun', $data);
 			$this->load->view('frontend/footer');
 			$this->load->view('frontend/foot');
-		}
-		else
-		{
+		} else {
 			$updated = FALSE;
 			$updated = $this->akun_model->update(
 				$this->session->userdata('id'),
@@ -56,20 +52,14 @@ class Akun extends CI_Controller
 				)
 			);
 
-			if ($updated)
-			{
+			if ($updated) {
 				$this->session->set_flashdata('success', 'Anda telah berhasil memperbarui informasi pelanggan anda');
-				if ($this->session->flashdata('redir'))
-				{
+				if ($this->session->flashdata('redir')) {
 					redirect($this->session->flashdata('redir'));
-				}
-				else
-				{
+				} else {
 					redirect('akun');
 				}
-			}
-			else
-			{
+			} else {
 				$this->session->set_flashdata('error', 'Gagal memperbarui informasi pelanggan');
 			}
 		}
@@ -77,8 +67,7 @@ class Akun extends CI_Controller
 
 	public function masuk()
 	{
-		if ($this->session->has_userdata('id'))
-		{
+		if ($this->session->has_userdata('id')) {
 			$this->session->set_flashdata('warning', 'Anda harus keluar dari akun anda terlebih dahulu sebelum masuk kembali');
 			redirect(site_url());
 		}
@@ -87,8 +76,7 @@ class Akun extends CI_Controller
 		// $this->form_validation->set_rules('jenis', 'Jenis akun', 'required|in_list[pengguna,admin]');
 		$this->form_validation->set_rules('password', 'Kata sandi', 'required|max_length[32]');
 
-		if ($this->form_validation->run() == FALSE)
-		{
+		if ($this->form_validation->run() == FALSE) {
 			$this->session->keep_flashdata('redir');
 			$info['title'] = 'Masuk';
 			$this->load->view('frontend/head', $info);
@@ -97,60 +85,45 @@ class Akun extends CI_Controller
 			$this->load->view('frontend/akun/masuk');
 			$this->load->view('frontend/footer');
 			$this->load->view('frontend/foot');
-		}
-		else
-		{
+		} else {
 			$valid_user = $this->akun_model->periksa_kredensial();
 
-			if ($valid_user)
-			{
+			if ($valid_user) {
 				$this->session->set_userdata('id', $valid_user->id_pengguna);
 				$this->session->set_userdata('username', $valid_user->nama);
 				$this->session->set_userdata('usergroup', $valid_user->grup);
 
 				$call_prefix = '';
 				$gender = $valid_user->jenis_kelamin;
-				if (!strcasecmp($gender, 'L'))
-				{
+				if (!strcasecmp($gender, 'L')) {
 					$call_prefix = 'Tn. ';
-				}
-				else if (!strcasecmp($gender, 'P'))
-				{
+				} else if (!strcasecmp($gender, 'P')) {
 					$call_prefix = 'Ny. ';
 				}
 				$group_name = '';
-				switch ($valid_user->grup)
-				{
-					case 1:
-					{
-						$group_name = 'pengguna';
-						break;
-					}
-					case 2:
-					{
-						$group_name = 'admin';
-						redirect('admin/dashboard');
-						break;
-					}
-					default:
-					{
-						$group_name = 'tidak diketahui';
-					}
+				switch ($valid_user->grup) {
+					case 1: {
+							$group_name = 'pengguna';
+							break;
+						}
+					case 2: {
+							$group_name = 'admin';
+							redirect('admin/dashboard');
+							break;
+						}
+					default: {
+							$group_name = 'tidak diketahui';
+						}
 				}
 
 				$this->session->set_flashdata('message', 'Selamat datang kembali ' . $call_prefix . ' <strong>' . $valid_user->nama_depan . '</strong>, anda telah berhasil masuk ke dalam sistem toko sebagai ' . $group_name . '.');
 
-				if ($this->session->flashdata('redir'))
-				{
+				if ($this->session->flashdata('redir')) {
 					redirect($this->session->flashdata('redir'));
-				}
-				else
-				{
+				} else {
 					redirect(site_url());
 				}
-			}
-			else
-			{
+			} else {
 				$this->session->set_flashdata('error', 'Nama pengguna / kata sandi salah');
 				redirect('akun/masuk');
 			}
@@ -165,8 +138,7 @@ class Akun extends CI_Controller
 
 	public function daftar()
 	{
-		if ($this->session->has_userdata('id'))
-		{
+		if ($this->session->has_userdata('id')) {
 			$this->session->set_flashdata('warning', 'Anda harus keluar dari akun anda terlebih dahulu sebelum mendaftar');
 			redirect(site_url());
 		}
@@ -182,24 +154,21 @@ class Akun extends CI_Controller
 		$this->form_validation->set_rules('tanggallahir', 'Tanggal lahir', 'required|is_natural_no_zero|greater_than_equal_to[1]|less_than_equal_to[31]|callback__cek_tanggal');
 		$this->form_validation->set_rules('jeniskelamin', 'Jenis kelamin', 'required|in_list[L,P]');
 
-		if ($this->form_validation->run() == FALSE)
-		{
+		if ($this->form_validation->run() == FALSE) {
 			$provinsi = $this->db->get('provinces');
 			$data['provinces'] = $provinsi->result();
 			$info['title'] = 'Mendaftar';
 			$this->load->view('frontend/head', $info);
 			$this->load->view('frontend/navbar');
 			$this->load->view('frontend/breadcrumbs');
-			$this->load->view('frontend/akun/daftar' , $data);
+			$this->load->view('frontend/akun/daftar', $data);
 			$this->load->view('frontend/footer');
 			$this->load->view('frontend/foot');
-		}
-		else
-		{
+		} else {
 			$username = set_value('nama');
 			$usergroup = 1;
 			$salt = uniqid('$6$');
-			$password = hash('sha512', set_value('password').$salt);
+			$password = hash('sha512', set_value('password') . $salt);
 			$userid = $this->akun_model->create(
 				array(
 					'nama' => $username,
@@ -215,28 +184,23 @@ class Akun extends CI_Controller
 					'regency_id' => set_value('kota'),
 					'district_id' => set_value('kecamatan'),
 					'alamat' => set_value('alamat'),
-					'kode_pos' => set_value('kode_pos'),
+					'kode_pos' => set_value('kodepos'),
 
 				)
 			);
 
-			if ($userid)
-			{
+
+			if ($userid) {
 				$this->session->set_userdata('id', $userid);
 				$this->session->set_userdata('username', $username);
 				$this->session->set_userdata('usergroup', $usergroup);
 
-				if ($this->session->flashdata('redir'))
-				{
+				if ($this->session->flashdata('redir')) {
 					redirect($this->session->flashdata('redir'));
-				}
-				else
-				{
+				} else {
 					redirect('produk');
 				}
-			}
-			else
-			{
+			} else {
 				$this->session->set_flashdata('error', 'Gagal membuat akun');
 			}
 		}
@@ -244,8 +208,7 @@ class Akun extends CI_Controller
 
 	public function perbarui()
 	{
-		if (!$this->session->has_userdata('id'))
-		{
+		if (!$this->session->has_userdata('id')) {
 			$this->session->set_flashdata('error', "Anda harus masuk untuk melanjutkan");
 			$this->session->set_flashdata('redir', uri_string());
 			return redirect('akun/masuk');
@@ -256,18 +219,16 @@ class Akun extends CI_Controller
 		$this->form_validation->set_rules('newpassword', 'Kata sandi baru', 'trim|required|min_length[6]|max_length[32]|differs[password]');
 		$this->form_validation->set_rules('confirmpassword', 'Konfirmasi kata sandi baru', 'trim|required|min_length[6]|max_length[32]|matches[newpassword]');
 
-		if ($this->form_validation->run() == TRUE)
-		{
+		if ($this->form_validation->run() == TRUE) {
 			$password = set_value('password');
 			$newpassword = set_value('newpassword');
 			$confirmnewpassword = set_value('confirmpassword');
 			$userdata = $this->akun_model->periksa_kredensial();
-			if ($userdata !== NULL && $userdata->id_pengguna == $this->session->userdata('id'))
-			{
+			if ($userdata !== NULL && $userdata->id_pengguna == $this->session->userdata('id')) {
 				$updated = FALSE;
 				$salt = uniqid('$6$');
-				$newpassword = hash('sha512', $newpassword.$salt);
-				$updated = $this->akun_model->update(	
+				$newpassword = hash('sha512', $newpassword . $salt);
+				$updated = $this->akun_model->update(
 					$this->session->userdata('id'),
 					array(
 						'password'	=> $newpassword,
@@ -275,57 +236,164 @@ class Akun extends CI_Controller
 					)
 				);
 
-				if ($updated)
-				{
+				if ($updated) {
 					$this->session->set_flashdata('success', 'Anda telah berhasil memperbarui data akun anda');
-				}
-				else
-				{
+				} else {
 					$this->session->set_flashdata('error', 'Gagal memperbarui data akun anda');
 				}
-			}
-			else
-			{
+			} else {
 				$this->session->set_flashdata('error', 'Nama pengguna / kata sandi salah');
 			}
 		}
 
-         $pesan['message'] =    "Pendaftaran berhasil";
-             
-             $this->load->view('frontend/v_success',$pesan);
+		$pesan['message'] =    "Pendaftaran berhasil";
+
+		$this->load->view('frontend/v_success', $pesan);
 
 		return redirect('akun');
 	}
 
 	function _cek_tanggal($tanggal)
 	{
-		if (!checkdate(set_value('bulanlahir'), $tanggal, set_value('tahunlahir')))
-		{
+		if (!checkdate(set_value('bulanlahir'), $tanggal, set_value('tahunlahir'))) {
 			$this->form_validation->set_message('cek_tanggal', 'Tanggal yang anda masukkan tidak benar.');
 			return FALSE;
 		}
 		return TRUE;
 	}
-	public function get_regencies($province_id){
-   	//$nama2 = str_replace('_', ' ', $nama);
-      $query = $this->db->get_where('regencies',array('province_id'=>$province_id));
-      $data = "<option value=''>Kota / Kabupaten</option>";
-      foreach ($query->result() as $value) {
-          $data .= "<option value='".$value->id."'>".$value->name."</option>";
-      }
-      echo $data;
+	// public function get_regencies($province_id){
+	// //$nama2 = str_replace('_', ' ', $nama);
+	//   $query = $this->db->get_where('regencies',array('province_id'=>$province_id));
+	//   $data = "<option value=''>Kota / Kabupaten</option>";
+	//   foreach ($query->result() as $value) {
+	//       $data .= "<option value='".$value->id."'>".$value->name."</option>";
+	//   }
+	//   echo $data;
 
-	}
-	public function get_districts($regency_id){
-   	//$nama2 = str_replace('_', ' ', $nama);
-      $query = $this->db->get_where('districts',array('regency_id'=>$regency_id));
-      $data = "<option value=''>Kecamatan</option>";
-      foreach ($query->result() as $value) {
-          $data .= "<option value='".$value->id."'>".$value->name."</option>";
-      }
-      echo $data;
+	// }
+	// public function get_districts($regency_id){
+	// //$nama2 = str_replace('_', ' ', $nama);
+	//   $query = $this->db->get_where('districts',array('regency_id'=>$regency_id));
+	//   $data = "<option value=''>Kecamatan</option>";
+	//   foreach ($query->result() as $value) {
+	//       $data .= "<option value='".$value->id."'>".$value->name."</option>";
+	//   }
+	//   echo $data;
 
+	// }
+
+	function _api_ongkir($data)
+	{
+		$curl = curl_init();
+
+		curl_setopt_array($curl, array(
+			//CURLOPT_URL => "https://api.rajaongkir.com/starter/province?id=12",
+			//CURLOPT_URL => "http://api.rajaongkir.com/starter/province",
+			CURLOPT_URL => "http://api.rajaongkir.com/starter/" . $data,
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_ENCODING => "",
+			CURLOPT_MAXREDIRS => 10,
+			CURLOPT_TIMEOUT => 30,
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+			CURLOPT_CUSTOMREQUEST => "GET",
+			CURLOPT_HTTPHEADER => array(
+				/* masukan api key disini*/
+				"key:7ab02cf76cf243a3457dbf774b51499f"
+			),
+		));
+
+		$response = curl_exec($curl);
+		$err = curl_error($curl);
+
+		curl_close($curl);
+
+		if ($err) {
+			return  $err;
+		} else {
+			//print_r($response);
+			return $response;
+		}
 	}
-	
+
+	function _api_kodepos($data)
+	{
+		$curl = curl_init();
+
+		curl_setopt_array($curl, array(
+			//CURLOPT_URL => "https://api.rajaongkir.com/starter/province?id=12",
+			//CURLOPT_URL => "http://api.rajaongkir.com/starter/province",
+			CURLOPT_URL => "http://api.rajaongkir.com/starter/" . $data,
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_ENCODING => "",
+			CURLOPT_MAXREDIRS => 10,
+			CURLOPT_TIMEOUT => 30,
+			CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+			CURLOPT_CUSTOMREQUEST => "GET",
+			CURLOPT_HTTPHEADER => array(
+				/* masukan api key disini*/
+				"key:7ab02cf76cf243a3457dbf774b51499f"
+			),
+		));
+
+		$response = curl_exec($curl);
+		$err = curl_error($curl);
+
+		curl_close($curl);
+
+		if ($err) {
+			return  $err;
+		} else {
+			//print_r($response);
+			return $response;
+		}
+	}
+
+
+	public function provinsi()
+	{
+
+		$provinsi = $this->_api_ongkir('province');
+		$data = json_decode($provinsi, true);
+		echo json_encode($data['rajaongkir']['results']);
+	}
+
+
+	public function lokasi()
+	{
+		$this->load->view('head');
+		$this->load->view('nav');
+		$this->load->view('halaman');
+		$this->load->view('footer');
+	}
+
+	public function kota($provinsi = "")
+	{
+		if (!empty($provinsi)) {
+			if (is_numeric($provinsi)) {
+				$kota = $this->_api_ongkir('city?province=' . $provinsi);
+				$data = json_decode($kota, true);
+				echo json_encode($data['rajaongkir']['results']);
+			} else {
+				show_404();
+			}
+		} else {
+			show_404();
+		}
+	}
+
+	public function kodepos($kota)
+	{
+		if (!empty($kota)) {
+			if (is_numeric($kota)) {
+				$kodepos = $this->_api_kodepos('city?id=' . $kota);
+				$data = json_decode($kodepos, true);
+				echo json_encode($data['rajaongkir']['results']);
+			} else {
+				show_404();
+			}
+		} else {
+			show_404();
+		}
+	}
 }
-?>
+// 

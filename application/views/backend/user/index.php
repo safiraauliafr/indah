@@ -180,7 +180,10 @@
                                     <td><?= $user_item->kode_pos ?></td>
                                     <td>
                                         <?= anchor('user/edit/' . $user_item->id_pengguna, '<i class="fa fa-cog" aria-hidden="true"></i> Edit', ['class' => 'btn btn-info btn-sm']) ?>
-                                        <?= anchor('admin/user/hapus/' . $user_item->id_pengguna, '<i class="fa fa-trash" aria-hidden="true"></i> Hapus', ['class' => 'btn btn-danger btn-sm', 'onclick' => 'return promptDelete(' . $user_item->id_pengguna . ')']) ?>
+                                        <a href="<?= base_url(); ?>admin/user/hapus/<?= $user_item->id_pengguna ?>"
+                                            onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">
+                                            <button type="button" class="btn btn-sm btn-danger">Delete</button>
+                                            <!-- <?= anchor('admin/user/hapus/' . $user_item->id_pengguna, '<i class="fa fa-trash" aria-hidden="true"></i> Hapus', ['class' => 'btn btn-danger btn-sm', 'onclick' => 'return promptDelete(' . $user_item->id_pengguna . ')']) ?> -->
                                     </td>
                                 </tr>
                                 <?php endforeach; ?>

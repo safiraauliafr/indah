@@ -169,7 +169,10 @@
                                     <td><?= $produk_item->terjual ?></td>
                                     <td>
                                         <?= anchor('admin/produk/edit/' . $produk_item->id_produk, '<i class="fa fa-cog" aria-hidden="true"></i> Edit', ['class' => 'btn btn-info btn-sm']) ?>
-                                        <?= anchor('admin/produk/hapus/' . $produk_item->id_produk, '<i class="fa fa-trash" aria-hidden="true"></i> Hapus', ['class' => 'btn btn-danger btn-sm', 'onclick' => 'return promptDelete(' . $produk_item->id_produk . ')']) ?>
+                                        <a href="<?= base_url(); ?>admin/produk/hapus/<?= $produk_item->id_produk ?>"
+                                            onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">
+                                            <button type="button" class="btn btn-sm btn-danger">Delete</button>
+                                            <!-- <?= anchor('admin/produk/hapus/' . $produk_item->id_produk, '<i class="fa fa-trash" aria-hidden="true"></i> Hapus', ['class' => 'btn btn-danger btn-sm', 'onclick' => 'return promptDelete(' . $produk_item->id_produk . ')']) ?> -->
                                     </td>
                                 </tr>
                                 <?php endforeach; ?>
